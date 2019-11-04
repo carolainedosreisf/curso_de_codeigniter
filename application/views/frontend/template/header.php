@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Blog do CodeIgniter</a>
+            <a class="navbar-brand" href="<?php echo base_url(); ?>">Blog do CodeIgniter</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -25,7 +25,7 @@
                   </ul>
                 </li>
                 <li>
-                    <a href="#">Sobre Nós</a>
+                    <a href="<?php echo base_url('sobrenos');?>">Sobre Nós</a>
                 </li>
                 <li>
                     <a href="#">Contato</a>

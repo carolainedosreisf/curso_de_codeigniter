@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Categorias extends CI_Controller {
+class Postagens extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
@@ -13,16 +13,16 @@ class Categorias extends CI_Controller {
 	{
 		$dados['categorias'] = $this ->categorias;
 		$this->load->model('publicacoes_model', 'modelpublicacoes');
-		$dados['postagem'] = $this->modelpublicacoes->categoria_pub($id);
+		$dados['postagem'] = $this->modelpublicacoes->publicacao($id);
 
 		//dados a serem enviados para o cabeçalho
-		$dados['titulo'] = 'Categorias';
+		$dados['titulo'] = 'Publicação';
 		$dados['subtitulo'] = '';
-		$dados['subtitulodb'] = $this->modelcategorias->listar_titulo($id);
+		$dados['subtitulodb'] = $this->modelpublicacoes->listar_titulo($id);
 
 		$this->load->view('frontend/template/html-header', $dados);
 		$this->load->view('frontend/template/header');
-		$this->load->view('frontend/categoria');
+		$this->load->view('frontend/publicacao');
 		$this->load->view('frontend/template/aside');
 		$this->load->view('frontend/template/footer');
 		$this->load->view('frontend/template/html-footer');
