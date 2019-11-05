@@ -55,7 +55,7 @@
             <div class="col-md-4 col-xs-6">
                 <img class="img-responsive img-circle" src="http://placehold.it/200x200" alt="">
                 <h4 class="text-center">
-                    <a href="<?php echo base_url('autor/'.$autor->$id.'/'.limpar($autor->nome));?>"><?php echo $autor->nome;?></a>
+                    <a href="<?php echo base_url('autor/'.$autor->id.'/'.limpar($autor->nome));?>"><?php echo $autor->nome;?></a>
                 </h4> 
             </div>
             <?php }?>

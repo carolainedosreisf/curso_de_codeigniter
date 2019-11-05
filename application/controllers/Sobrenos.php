@@ -15,7 +15,7 @@ class Sobrenos extends CI_Controller {
 	{
 		$dados['categorias'] = $this ->categorias;
 		
-		$dados['autores'] = $this->modelpublicacoes->listar_autores();
+		$dados['autores'] = $this->modelusuarios->listar_autores();
 
 		//dados a serem enviados para o cabeçalho
 		$dados['titulo'] = 'Sobre nós';
@@ -33,6 +33,9 @@ class Sobrenos extends CI_Controller {
 	{
 		$dados['categorias'] = $this ->categorias;
 		$dados['autores'] = $this->modelusuarios->listar_autor($id);
+
+		$dados['titulo'] = 'Sobre nós';
+		$dados['subtitulo'] = 'Autor';
 
 		//dados a serem enviados para o cabeçalho
 		
