@@ -20,12 +20,12 @@
                   <ul class="dropdown-menu">
                     <?php foreach ($categorias as $categoria){?>
                     
-                        <li><a href="<?php echo base_url('categoria/'.$categoria->id.'/'.limpar($categoria->titulo))?>"><?php echo $categoria->titulo; ?></a></li>
+                        <li><a href="<?php echo base_url('index.php/categoria/'.$categoria->id.'/'.limpar($categoria->titulo));//arrumar essa rota?>"><?php echo $categoria->titulo; ?></a></li>
                     <?php }?>
                   </ul>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('sobrenos');?>">Sobre Nós</a>
+                    <a href="<?php echo base_url('index.php/sobrenos');//arrumar essa rota?>">Sobre Nós</a>
                 </li>
                 <li>
                     <a href="#">Contato</a>

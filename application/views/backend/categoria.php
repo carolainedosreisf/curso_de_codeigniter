@@ -49,12 +49,14 @@
                                     <?php 
                                         $this->table->set_heading("Nome da Categoria", "Alterar", "Excluir");
                                         foreach($categorias as $categoria){
+                                            $vazio="teste";
                                             $nomecat= $categoria->titulo;
                                             $alterar= anchor(base_url('index.php/admin/categoria/alterar/'.md5($categoria->id)), '<i class="fa fa-refresh fa-fw fa-admin"> Alterar');//arrumar essa rota
                                             $excluir= anchor(base_url('index.php/admin/categoria/excluir/'.md5($categoria->id)),'<i class="fa fa-remove fa-fw fa-admin"> Excluir'); //arrumar essa rota
                                             $this->table->add_row($nomecat,$alterar,$excluir);
                                             $this->table->set_template(array(
                                                 'table_open' => '<table class="table table-striped">'
+                                                
                                             ));
                                             echo $this->table->generate();
                                         }

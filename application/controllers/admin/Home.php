@@ -6,7 +6,7 @@ class Home extends CI_Controller {
     public function __construct(){
 		parent::__construct();
 		if(!$this->session->userdata('logado')){
-			redirect(base_url('index.php/admin'));//arrumar essa rota
+			redirect(base_url('index.php/admin/login'));//arrumar essa rota
 		}
     }
 

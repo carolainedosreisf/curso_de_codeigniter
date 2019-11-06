@@ -17,13 +17,13 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="<?php echo base_url('admin/categoria'); ?>"><i class="fa fa-sitemap fa-fw"></i> Categorias</a>
+                        <a href="<?php echo base_url('index.php/admin/categoria');//arrumar essa rota ?>"><i class="fa fa-sitemap fa-fw"></i> Categorias</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('admin/postagem'); ?>"><i class="fa fa-edit fa-fw"></i> Postagens</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/usuario'); ?>"><i class="fa fa-wrench fa-fw"></i> Usuários</a>
+                        <a href="<?php echo base_url('index.php/admin/usuarios');//arrumar essa rota ?>"><i class="fa fa-wrench fa-fw"></i> Usuários</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('index.php/admin/usuarios/logout'); //arruamar essa rota?>"><i class="fa fa-sign-out fa-fw"></i> Sair do Sistema</a>
