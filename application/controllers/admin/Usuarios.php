@@ -96,7 +96,7 @@ class Usuarios extends CI_Controller {
         $this->load->view('backend/template/html-footer');
     }
     
-    public function salvar_alteracoes(){
+    public function salvar_alteracoes($idCrip){
         if(!$this->session->userdata('logado')){
             redirect(base_url('index.php/admin/login'));//arrumar essa rota
         }
@@ -109,7 +109,7 @@ class Usuarios extends CI_Controller {
         $this->form_validation->set_rules('txt-senha','Senha','required|min_length[3]');
         $this->form_validation->set_rules('txt-confir-senha','Confirmar Senha','required|matches[txt-senha]');
         if($this->form_validation->run() == FALSE){
-            $this->index();
+            $this->index($idCrip);
         }else{
             $nome=$this->input->post('txt-nome');
             $email=$this->input->post('txt-email');
@@ -128,39 +128,40 @@ class Usuarios extends CI_Controller {
 
     /*--------------------------------------------------------------------- */
     public function nova_foto(){
-        if(!$this->session->userdata('logado')){
-			redirect(base_url('index.php/admin/login'));//arrumar essa rota
-        }
+		if(!$this->session->userdata('logado')){
+			redirect(base_url('admin/login'));
+		}
+		$this->load->model('usuarios_model', 'modelusuarios');
 
-        $this->load->model('usuarios_model','modelusuarios');
-        $id=$this->input->post('id');
-        $config['upload_path']= './assets/frontend/img/usuarios';
-        $config['allowed_types'] = 'jpg';
-        $config['file_name'] = $id.".jpg";
-        $config['overwrite'] = TRUE;
-        $this->load->library('upload', $config);
-        if(!$this->upload->do_upload()){
-            echo $this->upload->display_errors();
-        }else{
-            $config2['source_image']= './assets/frontend/img/usuarios'.$id.'.jpg';
-            $confi2['create_thumb'] = FALSE;
-            $config2['width']=200;
-            $config2['height']=200;
-            $this->load->library('image_lib', $config2);
-            
-            if($this->image_lib->resize()){
-                //redirect(base_url('admin/usuarios/alterar/'.$id));//arrumar essa rota
-                if($this->modelusuarios->alterar_img($id)){
-                    redirect(base_url('index.php/admin/alterar/'.$id));//arrumar essa rota
-                }else{
-                    echo "Houve um erro no sistema!";
-                }
-            }else{
-                echo $this->image_lib->display_errors();
-            }
+		$id= $this->input->post('id');
+		$config['upload_path']= './assets/frontend/img/usuarios';
+		$config['allowed_types']= 'jpg';
+		$config['file_name']= $id.".jpg";
+		$config['overwrite']= TRUE;
+		$this->load->library('upload', $config);
 
-        }
-    }
+		if(!$this->upload->do_upload()){
+			echo $this->upload->display_errors();
+		}else{
+			$config2['source_image']= './assets/frontend/img/usuarios/'.$id.'.jpg';
+			$config2['create_thumb']= FALSE;
+			$config2['width']= 200;
+			$config2['height']= 200;
+			$this->load->library('image_lib', $config2);
+			if($this->image_lib->resize()){
+
+				if($this->modelusuarios->alterar_img($id)){
+				redirect(base_url('index.php/admin/usuarios/alterar/'.$id));//arrumar essa rota
+				}else{
+					echo "Houve um erro no sistema!";
+				}
+				
+			}else{
+				echo $this->image_lib->display_errors();
+			}
+		}
+
+	}
 
     public function pag_login(){
 		$dados['titulo'] = 'Painel de Controle';

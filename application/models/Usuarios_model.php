@@ -70,8 +70,9 @@ class Usuarios_model extends CI_Model {
 		$this->db->where('id',$id);
 		return $this->db->update('usuario',$dados);
 	}
+	
 	public function alterar_img($id){
-		$dados['img'] = 1;
+		$dados['img']= 1;
 		$this->db->where('md5(id)',$id);
 		return $this->db->update('usuario',$dados);
 	}

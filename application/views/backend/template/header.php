@@ -20,7 +20,7 @@
                         <a href="<?php echo base_url('index.php/admin/categoria');//arrumar essa rota ?>"><i class="fa fa-sitemap fa-fw"></i> Categorias</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/postagem'); ?>"><i class="fa fa-edit fa-fw"></i> Postagens</a>
+                        <a href="<?php echo base_url('index.php/admin/publicacao');//arrumar essa rota ?>"><i class="fa fa-edit fa-fw"></i> Postagens</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('index.php/admin/usuarios');//arrumar essa rota ?>"><i class="fa fa-wrench fa-fw"></i> Usuários</a>

@@ -28,7 +28,7 @@
                     <a href="<?php echo base_url('index.php/sobrenos');//arrumar essa rota?>">Sobre Nós</a>
                 </li>
                 <li>
-                    <a href="#">Contato</a>
+                    <a href="<?php echo base_url('index.php/contato');//arrumar essa rota?>">Contato</a>
                 </li>
             </ul>
         </div>

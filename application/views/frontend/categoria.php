@@ -19,7 +19,7 @@
                     }
                 ?>
             </small>
-        </h1>
+        </h1> 
 
         <!-- First Blog Post -->
         <?php
@@ -33,13 +33,27 @@
         </p>
         <p><span class="glyphicon glyphicon-time"></span> <?php echo postadoem($destaque->data);?></p>
         <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <?php 
+            if($destaque->img == 1){
+                $fotopub = base_url("assets/frontend/img/publicacao/".md5($destaque->id).".jpg");
+
+        ?>
+        <img class="img-responsive" src="<?php echo $fotopub?>" alt="">
         <hr>
+
+        <?php 
+            }
+            
+        ?>
         <p><?php echo $destaque->subtitulo;?></p>
         <a class="btn btn-primary" href="<?php echo base_url('index.php/postagem/'.$destaque->id.'/'.limpar($destaque->titulo));//arrumar essa rota?>">Leia mais <span class="glyphicon glyphicon-chevron-right"></span></a>
 
         <hr>
-        <?php }?>
+        <?php 
+            }
+            echo "<div class='paginacao'>".$links_paginacao."</div>";
+
+        ?>
         
 
     </div>

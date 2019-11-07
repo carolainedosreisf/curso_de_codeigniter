@@ -12,7 +12,7 @@ class Categoria extends CI_Controller {
 		}
     }
 
-	public function index()
+	public function index($publicado = null)
 	{
 		
 		$this->load->library('table');
@@ -20,6 +20,8 @@ class Categoria extends CI_Controller {
 		//dados a serem enviados para o cabeçalho
 		$dados['titulo'] = 'Painel de controle';
 		$dados['subtitulo'] = 'Categoria';
+		$dados['publicado'] = $publicado;
+
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/header');
@@ -35,7 +37,7 @@ class Categoria extends CI_Controller {
 		}else{
 			$titulo=$this->input->post('txt-categoria');
 			if($this->modelcategorias->adicionar($titulo)){
-				redirect(base_url('index.php/admin/categoria'));//arrumar essa rota
+				redirect(base_url('index.php/admin/categoria/1'));//arrumar essa rota
 			}else{
 				echo "Houve um erro no sistema!";
 			}
@@ -61,12 +63,12 @@ class Categoria extends CI_Controller {
 		$this->load->view('backend/alterar-categoria');
 		$this->load->view('backend/template/html-footer');
 	}
-	public function salvar_alteracoes(){
+	public function salvar_alteracoes($idCrip){
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('txt-categoria', 'Nome da Categoria',
 			'required|min_length[3]|is_unique[categoria.titulo]');
 		if($this->form_validation->run() == FALSE){
-			$this->index();
+			$this->alterar($idCrip);
 		}else{
 			$titulo=$this->input->post('txt-categoria');
 			$id=$this->input->post('txt-id');
@@ -75,7 +77,7 @@ class Categoria extends CI_Controller {
 			}else{
 				echo "Houve um erro no sistema!";
 			}
-		}
+		} 
 	}
    
 }

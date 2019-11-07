@@ -9,11 +9,24 @@ class Categorias extends CI_Controller {
         $this->categorias = $this->modelcategorias->listar_categorias();
     }
 
-	public function index($id, $slug=null)
+	public function index($id,$nome,$pular=null,$post_por_pagina=null)
 	{
-		$dados['categorias'] = $this ->categorias;
-		$this->load->model('publicacoes_model', 'modelpublicacoes');
-		$dados['postagem'] = $this->modelpublicacoes->categoria_pub($id);
+		$this->load->helper('funcoes');
+		$this->load->model('publicacoes_model','modelpublicacoes');
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url("index.php/categoria/".$id."/".$nome);//arrumar essa rota
+		$config['total_rows'] = $this->modelpublicacoes->contar1($id);
+		$post_por_pagina = 2;
+		$config['per_page'] = $post_por_pagina;
+
+		$this->pagination->initialize($config);
+
+		$dados['links_paginacao'] = $this->pagination->create_links();
+
+		$dados['categorias'] = $this->categorias;
+		
+		$dados['postagem'] = $this->modelpublicacoes->categoria_pub($id,$pular,$post_por_pagina);
 
 		//dados a serem enviados para o cabeçalho
 		$dados['titulo'] = 'Categorias';
